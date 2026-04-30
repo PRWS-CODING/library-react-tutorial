@@ -1,10 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Rating from "../components/ui/Rating";
 import Price from "../components/ui/Price";
+import Recommended from "../components/ui/Recommended";
 
 function BookInfo({ books }) {
+  const { id } = useParams();
+  const book = books.find((book) => +book.id === +id);
+
   return (
     <div id="books__body">
       <main id="books__main">
@@ -20,37 +24,37 @@ function BookInfo({ books }) {
             </div>
             <div className="book__selected">
               <figure className="book__selected--figure">
-                <img src={books.url} alt="" className="book__selected--img" />
+                <img src={book.url} alt="" className="book__selected--img" />
               </figure>
               <div className="book__selected--description">
-                <h2 className="book__selected--title">{books.title}</h2>
-                <Rating rating={books.rating} />
+                <h2 className="book__selected--title">{book.title}</h2>
+                <Rating rating={book.rating} />
                 <div className="book__selected--price">
                   <Price
-                    originalPrice={books.originalPrice}
-                    salePrice={books.salePrice}
+                    originalPrice={book.originalPrice}
+                    salePrice={book.salePrice}
                   />
                 </div>
                 <div className="book__summary">
-                  <div className="book__summary--tit">
-                    <div className="summary"></div>
+                  <h3 className="book__summary--title">Summary</h3>
+                  <div className="book__summary--para">
+                    <p className="book__summary--para">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Pariatur hic tempore fugiat aliquam itaque. Sapiente sit
+                      asperiores, reprehenderit dolorum excepturi itaque
+                      quibusdam, minima impedit delectus optio vitae libero
+                      perspiciatis id?
+                    </p>
+                    <p className="book__summary--para">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Pariatur hic tempore fugiat aliquam itaque. Sapiente sit
+                      asperiores, reprehenderit dolorum excepturi itaque
+                      quibusdam, minima impedit delectus optio vitae libero
+                      perspiciatis id?
+                    </p>
                   </div>
-                  <p className="book__summary__para">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Pariatur hic tempore fugiat aliquam itaque. Sapiente sit
-                    asperiores, reprehenderit dolorum excepturi itaque
-                    quibusdam, minima impedit delectus optio vitae libero
-                    perspiciatis id?
-                  </p>
-                  <p className="book__summary__para">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Pariatur hic tempore fugiat aliquam itaque. Sapiente sit
-                    asperiores, reprehenderit dolorum excepturi itaque
-                    quibusdam, minima impedit delectus optio vitae libero
-                    perspiciatis id?
-                  </p>
                 </div>
-                <button className="btn">Add to Cart</button>
+                <button className="btn" >Add to Cart</button>
               </div>
             </div>
           </div>
@@ -58,10 +62,9 @@ function BookInfo({ books }) {
         <div className="books__container">
           <div className="row">
             <div className="book__selected--top">
-              <h2 className="book__selected--title--top">
-                 Recommended Books
-              </h2>
+              <h2 className="book__selected--title--top">Recommended Books</h2>
             </div>
+            <Recommended books={books} id={id} />
           </div>
         </div>
       </main>
