@@ -1,6 +1,6 @@
 import React from "react";
 import { books } from "../data";
-import Book from "./Ui/Book";
+import Book from "./ui/Book";
 
 function Discounted() {
   return (
