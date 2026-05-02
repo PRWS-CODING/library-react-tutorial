@@ -1,4 +1,5 @@
 import React from "react";
+import MyLogo from "../assets/My-Logo.svg";
 import Logo from "../assets/Library.svg";
 import { Link } from "react-router-dom";
 
@@ -20,6 +21,9 @@ function Footer() {
                         <Link to="/cart" className="footer__link">Cart</Link>
                 </div>
                 <div className="footer__copyright">Copyright &copy; 2026 Library</div>
+                <figure className="footer__logo">
+                  <img src={MyLogo} className="footer__logo--fig" alt="" />
+                </figure>
         </div>
       </div>
     </footer>

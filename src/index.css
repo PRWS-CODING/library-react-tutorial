@@ -476,6 +476,15 @@ footer {
   filter: grayscale(1) invert(1);
 }
 
+.footer__logo--fig {
+  margin-top: 12px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  filter: grayscale(1) invert(1);
+}
+
 .footer__link,
 .footer__copyright {
   color: #fff;
